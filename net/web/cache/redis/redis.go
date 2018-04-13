@@ -19,7 +19,7 @@ import (
 	"fmt"
 	"time"
 
-	"ireul.com/com"
+	"magi.systems/com"
 
 	"magi.systems/database/redis"
 	"magi.systems/net/web/cache"

@@ -18,7 +18,7 @@ import (
 	"regexp"
 	"strings"
 
-	"ireul.com/com"
+	"magi.systems/com"
 )
 
 type patternType int8

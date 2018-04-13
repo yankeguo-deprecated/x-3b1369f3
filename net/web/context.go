@@ -29,7 +29,7 @@ import (
 	"strings"
 	"time"
 
-	"ireul.com/com"
+	"magi.systems/com"
 	"magi.systems/net/web/inject"
 )
 

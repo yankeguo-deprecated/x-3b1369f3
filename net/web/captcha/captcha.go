@@ -22,7 +22,7 @@ import (
 	"path"
 	"strings"
 
-	"ireul.com/com"
+	"magi.systems/com"
 	"magi.systems/net/web"
 	"magi.systems/net/web/cache"
 )

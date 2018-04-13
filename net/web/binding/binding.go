@@ -29,7 +29,7 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	"ireul.com/com"
+	"magi.systems/com"
 	"magi.systems/net/web"
 )
 

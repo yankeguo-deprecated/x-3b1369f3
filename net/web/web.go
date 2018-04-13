@@ -25,7 +25,7 @@ import (
 	"reflect"
 	"strings"
 
-	"ireul.com/com"
+	"magi.systems/com"
 	"magi.systems/net/web/inject"
 )
 

@@ -23,7 +23,7 @@ import (
 	"testing"
 
 	. "github.com/smartystreets/goconvey/convey"
-	"ireul.com/com"
+	"magi.systems/com"
 	"magi.systems/net/web"
 	"magi.systems/net/web/session"
 )

@@ -32,7 +32,7 @@ import (
 	"time"
 
 	"ireul.com/binfs"
-	"ireul.com/com"
+	"magi.systems/com"
 )
 
 const (

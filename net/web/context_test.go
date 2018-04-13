@@ -24,7 +24,7 @@ import (
 	"testing"
 	"time"
 
-	"ireul.com/com"
+	"magi.systems/com"
 
 	. "github.com/smartystreets/goconvey/convey"
 )

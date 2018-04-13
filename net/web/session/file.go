@@ -25,7 +25,7 @@ import (
 	"sync"
 	"time"
 
-	"ireul.com/com"
+	"magi.systems/com"
 )
 
 // FileStore represents a file session store implementation.

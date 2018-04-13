@@ -22,7 +22,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"ireul.com/com"
+	"magi.systems/com"
 
 	. "github.com/smartystreets/goconvey/convey"
 )

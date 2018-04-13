@@ -21,7 +21,7 @@ import (
 	"encoding/gob"
 	"io"
 
-	"ireul.com/com"
+	"magi.systems/com"
 )
 
 func init() {

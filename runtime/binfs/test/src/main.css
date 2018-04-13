@@ -1,0 +1,55 @@
+html {
+  background: -webkit-radial-gradient(center ellipse, #2196f3 0%, #020401 100%);
+  background: radial-gradient(ellipse at center, #2196f3 0%, #020401 100%);
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica", sans-serif;
+  color: white;
+}
+
+a {
+  color: #dddddd;
+}
+
+a:hover {
+  color: white;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+div#container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width:  100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+div.footer {
+  font-family: monospace;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: 1vh;
+  color: #dddddd;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+  }
+  div.footer {
+    font-size: 0.7rem;
+  }
+}

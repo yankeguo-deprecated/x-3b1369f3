@@ -1,3 +1,3 @@
 package mysql
 
-import _ "ireul.com/mysql"
+import _ "magi.systems/database/mysql"

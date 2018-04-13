@@ -12,12 +12,12 @@ import (
 	"time"
 
 	"github.com/erikstmartin/go-testdb"
-	"ireul.com/now"
 	"magi.systems/database/orm"
 	_ "magi.systems/database/orm/dialects/mssql"
 	_ "magi.systems/database/orm/dialects/mysql"
 	"magi.systems/database/orm/dialects/postgres"
 	_ "magi.systems/database/orm/dialects/sqlite3"
+	"magi.systems/time/now"
 )
 
 var (

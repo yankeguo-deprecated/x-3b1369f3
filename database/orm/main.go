@@ -32,7 +32,7 @@ type DB struct {
 
 // Open initialize a new db connection, need to import driver first, e.g:
 //
-//     import _ "ireul.com/mysql"
+//     import _ "magi.systems/database/mysql"
 //     func main() {
 //       db, err := orm.Open("mysql", "user:password@/dbname?charset=utf8&parseTime=True&loc=Local")
 //     }

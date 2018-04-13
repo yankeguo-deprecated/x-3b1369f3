@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"ireul.com/now"
+	"magi.systems/time/now"
 )
 
 func TestCreate(t *testing.T) {

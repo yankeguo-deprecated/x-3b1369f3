@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"ireul.com/inflection"
+	"magi.systems/text/inflection"
 )
 
 // DefaultTableNameHandler default table name handler

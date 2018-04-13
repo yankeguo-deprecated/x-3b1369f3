@@ -21,7 +21,7 @@ import (
 
 	"ireul.com/com"
 
-	"ireul.com/redis"
+	"magi.systems/database/redis"
 	"magi.systems/net/web/cache"
 )
 

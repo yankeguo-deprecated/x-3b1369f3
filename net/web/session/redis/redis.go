@@ -20,7 +20,7 @@ import (
 	"sync"
 	"time"
 
-	"ireul.com/redis"
+	"magi.systems/database/redis"
 	"magi.systems/net/web/session"
 )
 

@@ -301,7 +301,7 @@ func (c *baseClient) txPipelineReadQueued(cn *pool.Conn, cmds []Cmder) error {
 		return err
 	}
 
-	for _ = range cmds {
+	for range cmds {
 		err := statusCmd.readReply(cn)
 		if err != nil && !internal.IsRedisError(err) {
 			return err

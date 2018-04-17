@@ -25,12 +25,6 @@ import (
 	. "github.com/smartystreets/goconvey/convey"
 )
 
-func Test_Version(t *testing.T) {
-	Convey("Get version", t, func() {
-		So(Version(), ShouldEqual, _VERSION)
-	})
-}
-
 func Test_New(t *testing.T) {
 	Convey("Initialize a new instance", t, func() {
 		So(New(), ShouldNotBeNil)

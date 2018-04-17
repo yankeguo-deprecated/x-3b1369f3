@@ -16,16 +16,9 @@
 package web
 
 import (
-	"fmt"
 	"log"
-	"net/http"
 	"reflect"
 	"time"
-)
-
-var (
-	ColorLog      = false
-	LogTimeFormat = "2006-01-02 15:04:05"
 )
 
 // LoggerInvoker is an inject.FastInvoker wrapper of func(ctx *Context, log *log.Logger).
@@ -38,11 +31,17 @@ func (invoke LoggerInvoker) Invoke(params []interface{}) ([]reflect.Value, error
 
 // Logger returns a middleware handler that logs the request as it goes in and the response as it goes out.
 func Logger() Handler {
-	return func(ctx *Context, log *log.Logger) {
+	return func(ctx *Context, g *log.Logger) {
 		start := time.Now()
 		rw := ctx.Resp.(ResponseWriter)
 		ctx.Next()
-		content := fmt.Sprintf("%s %s %v %s %v", ctx.Req.Method, ctx.Req.RequestURI, rw.Status(), http.StatusText(rw.Status()), time.Since(start))
-		log.Println(content)
+		g.Printf(
+			"%s %v %s %s %v",
+			ctx.CridMark(),
+			rw.Status(),
+			ctx.Req.Method,
+			ctx.Req.URL.Path,
+			int64(time.Since(start)/time.Millisecond),
+		)
 	}
 }

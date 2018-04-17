@@ -15,9 +15,11 @@
 package web
 
 import (
+	"fmt"
 	"html/template"
 	"io"
 	"io/ioutil"
+	"log"
 	"mime/multipart"
 	"net/http"
 	"net/url"
@@ -69,8 +71,8 @@ func (r *Request) Body() *RequestBody {
 	return &RequestBody{r.Request.Body}
 }
 
-// ContextInvoker is an inject.FastInvoker wrapper of func(ctx *Context).
-type ContextInvoker func(ctx *Context)
+// ContextInvoker is an inject.FastInvoker wrapper of func(c *Context).
+type ContextInvoker func(c *Context)
 
 func (invoke ContextInvoker) Invoke(params []interface{}) ([]reflect.Value, error) {
 	invoke(params[0].(*Context))
@@ -92,7 +94,9 @@ type Context struct {
 	params Params
 	Render
 	Locale
-	Data map[string]interface{}
+	Data   map[string]interface{}
+	crid   string
+	logger *log.Logger
 }
 
 func (c *Context) handler() Handler {
@@ -105,11 +109,20 @@ func (c *Context) handler() Handler {
 	panic("invalid index for context handler")
 }
 
+func (c *Context) Crid() string {
+	return c.crid
+}
+
+func (c *Context) CridMark() string {
+	return "CRID[" + c.Crid() + "]"
+}
+
 func (c *Context) Next() {
-	c.index += 1
+	c.index++
 	c.run()
 }
 
+// Written Resp.Written
 func (c *Context) Written() bool {
 	return c.Resp.Written()
 }
@@ -120,7 +133,7 @@ func (c *Context) run() {
 		if err != nil {
 			panic(err)
 		}
-		c.index += 1
+		c.index++
 
 		// if the handler returned something, write it to the http response
 		if len(vals) > 0 {
@@ -136,12 +149,12 @@ func (c *Context) run() {
 }
 
 // RemoteAddr returns more real IP address.
-func (ctx *Context) RemoteAddr() string {
-	addr := ctx.Req.Header.Get("X-Real-IP")
+func (c *Context) RemoteAddr() string {
+	addr := c.Req.Header.Get("X-Real-IP")
 	if len(addr) == 0 {
-		addr = ctx.Req.Header.Get("X-Forwarded-For")
+		addr = c.Req.Header.Get("X-Forwarded-For")
 		if addr == "" {
-			addr = ctx.Req.RemoteAddr
+			addr = c.Req.RemoteAddr
 			if i := strings.LastIndex(addr, ":"); i > -1 {
 				addr = addr[:i]
 			}
@@ -150,69 +163,69 @@ func (ctx *Context) RemoteAddr() string {
 	return addr
 }
 
-func (ctx *Context) renderHTML(status int, setName, tplName string, data ...interface{}) {
+func (c *Context) renderHTML(status int, setName, tplName string, data ...interface{}) {
 	if len(data) <= 0 {
-		ctx.Render.HTMLSet(status, setName, tplName, ctx.Data)
+		c.Render.HTMLSet(status, setName, tplName, c.Data)
 	} else if len(data) == 1 {
-		ctx.Render.HTMLSet(status, setName, tplName, data[0])
+		c.Render.HTMLSet(status, setName, tplName, data[0])
 	} else {
-		ctx.Render.HTMLSet(status, setName, tplName, data[0], data[1].(HTMLOptions))
+		c.Render.HTMLSet(status, setName, tplName, data[0], data[1].(HTMLOptions))
 	}
 }
 
 // HTML calls Render.HTML but allows less arguments.
-func (ctx *Context) HTML(status int, name string, data ...interface{}) {
-	ctx.renderHTML(status, DEFAULT_TPL_SET_NAME, name, data...)
+func (c *Context) HTML(status int, name string, data ...interface{}) {
+	c.renderHTML(status, DEFAULT_TPL_SET_NAME, name, data...)
 }
 
 // HTML calls Render.HTMLSet but allows less arguments.
-func (ctx *Context) HTMLSet(status int, setName, tplName string, data ...interface{}) {
-	ctx.renderHTML(status, setName, tplName, data...)
+func (c *Context) HTMLSet(status int, setName, tplName string, data ...interface{}) {
+	c.renderHTML(status, setName, tplName, data...)
 }
 
-func (ctx *Context) Redirect(location string, status ...int) {
+func (c *Context) Redirect(location string, status ...int) {
 	code := http.StatusFound
 	if len(status) == 1 {
 		code = status[0]
 	}
 
-	http.Redirect(ctx.Resp, ctx.Req.Request, location, code)
+	http.Redirect(c.Resp, c.Req.Request, location, code)
 }
 
 // Maximum amount of memory to use when parsing a multipart form.
 // Set this to whatever value you prefer; default is 10 MB.
 var MaxMemory = int64(1024 * 1024 * 10)
 
-func (ctx *Context) parseForm() {
-	if ctx.Req.Form != nil {
+func (c *Context) parseForm() {
+	if c.Req.Form != nil {
 		return
 	}
 
-	contentType := ctx.Req.Header.Get(_CONTENT_TYPE)
-	if (ctx.Req.Method == "POST" || ctx.Req.Method == "PUT") &&
+	contentType := c.Req.Header.Get(_CONTENT_TYPE)
+	if (c.Req.Method == "POST" || c.Req.Method == "PUT") &&
 		len(contentType) > 0 && strings.Contains(contentType, "multipart/form-data") {
-		ctx.Req.ParseMultipartForm(MaxMemory)
+		c.Req.ParseMultipartForm(MaxMemory)
 	} else {
-		ctx.Req.ParseForm()
+		c.Req.ParseForm()
 	}
 }
 
 // Query querys form parameter.
-func (ctx *Context) Query(name string) string {
-	ctx.parseForm()
-	return ctx.Req.Form.Get(name)
+func (c *Context) Query(name string) string {
+	c.parseForm()
+	return c.Req.Form.Get(name)
 }
 
 // QueryTrim querys and trims spaces form parameter.
-func (ctx *Context) QueryTrim(name string) string {
-	return strings.TrimSpace(ctx.Query(name))
+func (c *Context) QueryTrim(name string) string {
+	return strings.TrimSpace(c.Query(name))
 }
 
 // QueryStrings returns a list of results by given query name.
-func (ctx *Context) QueryStrings(name string) []string {
-	ctx.parseForm()
+func (c *Context) QueryStrings(name string) []string {
+	c.parseForm()
 
-	vals, ok := ctx.Req.Form[name]
+	vals, ok := c.Req.Form[name]
 	if !ok {
 		return []string{}
 	}
@@ -220,90 +233,90 @@ func (ctx *Context) QueryStrings(name string) []string {
 }
 
 // QueryEscape returns escapred query result.
-func (ctx *Context) QueryEscape(name string) string {
-	return template.HTMLEscapeString(ctx.Query(name))
+func (c *Context) QueryEscape(name string) string {
+	return template.HTMLEscapeString(c.Query(name))
 }
 
 // QueryBool returns query result in bool type.
-func (ctx *Context) QueryBool(name string) bool {
-	v, _ := strconv.ParseBool(ctx.Query(name))
+func (c *Context) QueryBool(name string) bool {
+	v, _ := strconv.ParseBool(c.Query(name))
 	return v
 }
 
 // QueryInt returns query result in int type.
-func (ctx *Context) QueryInt(name string) int {
-	return com.StrTo(ctx.Query(name)).MustInt()
+func (c *Context) QueryInt(name string) int {
+	return com.StrTo(c.Query(name)).MustInt()
 }
 
 // QueryInt64 returns query result in int64 type.
-func (ctx *Context) QueryInt64(name string) int64 {
-	return com.StrTo(ctx.Query(name)).MustInt64()
+func (c *Context) QueryInt64(name string) int64 {
+	return com.StrTo(c.Query(name)).MustInt64()
 }
 
 // QueryFloat64 returns query result in float64 type.
-func (ctx *Context) QueryFloat64(name string) float64 {
-	v, _ := strconv.ParseFloat(ctx.Query(name), 64)
+func (c *Context) QueryFloat64(name string) float64 {
+	v, _ := strconv.ParseFloat(c.Query(name), 64)
 	return v
 }
 
 // Params returns value of given param name.
-// e.g. ctx.Params(":uid") or ctx.Params("uid")
-func (ctx *Context) Params(name string) string {
+// e.g. c.Params(":uid") or c.Params("uid")
+func (c *Context) Params(name string) string {
 	if len(name) == 0 {
 		return ""
 	}
 	if len(name) > 1 && name[0] != ':' {
 		name = ":" + name
 	}
-	return ctx.params[name]
+	return c.params[name]
 }
 
 // SetParams sets value of param with given name.
-func (ctx *Context) SetParams(name, val string) {
+func (c *Context) SetParams(name, val string) {
 	if !strings.HasPrefix(name, ":") {
 		name = ":" + name
 	}
-	ctx.params[name] = val
+	c.params[name] = val
 }
 
 // ReplaceAllParams replace all current params with given params
-func (ctx *Context) ReplaceAllParams(params Params) {
-	ctx.params = params
+func (c *Context) ReplaceAllParams(params Params) {
+	c.params = params
 }
 
 // ParamsEscape returns escapred params result.
-// e.g. ctx.ParamsEscape(":uname")
-func (ctx *Context) ParamsEscape(name string) string {
-	return template.HTMLEscapeString(ctx.Params(name))
+// e.g. c.ParamsEscape(":uname")
+func (c *Context) ParamsEscape(name string) string {
+	return template.HTMLEscapeString(c.Params(name))
 }
 
 // ParamsInt returns params result in int type.
-// e.g. ctx.ParamsInt(":uid")
-func (ctx *Context) ParamsInt(name string) int {
-	return com.StrTo(ctx.Params(name)).MustInt()
+// e.g. c.ParamsInt(":uid")
+func (c *Context) ParamsInt(name string) int {
+	return com.StrTo(c.Params(name)).MustInt()
 }
 
 // ParamsInt64 returns params result in int64 type.
-// e.g. ctx.ParamsInt64(":uid")
-func (ctx *Context) ParamsInt64(name string) int64 {
-	return com.StrTo(ctx.Params(name)).MustInt64()
+// e.g. c.ParamsInt64(":uid")
+func (c *Context) ParamsInt64(name string) int64 {
+	return com.StrTo(c.Params(name)).MustInt64()
 }
 
 // ParamsFloat64 returns params result in int64 type.
-// e.g. ctx.ParamsFloat64(":uid")
-func (ctx *Context) ParamsFloat64(name string) float64 {
-	v, _ := strconv.ParseFloat(ctx.Params(name), 64)
+// e.g. c.ParamsFloat64(":uid")
+func (c *Context) ParamsFloat64(name string) float64 {
+	v, _ := strconv.ParseFloat(c.Params(name), 64)
 	return v
 }
 
 // GetFile returns information about user upload file by given form field name.
-func (ctx *Context) GetFile(name string) (multipart.File, *multipart.FileHeader, error) {
-	return ctx.Req.FormFile(name)
+func (c *Context) GetFile(name string) (multipart.File, *multipart.FileHeader, error) {
+	return c.Req.FormFile(name)
 }
 
 // SaveToFile reads a file from request by field name and saves to given path.
-func (ctx *Context) SaveToFile(name, savePath string) error {
-	fr, _, err := ctx.GetFile(name)
+func (c *Context) SaveToFile(name, savePath string) error {
+	fr, _, err := c.GetFile(name)
 	if err != nil {
 		return err
 	}
@@ -321,7 +334,7 @@ func (ctx *Context) SaveToFile(name, savePath string) error {
 
 // SetCookie sets given cookie value to response header.
 // FIXME: IE support? http://golanghome.com/post/620#reply2
-func (ctx *Context) SetCookie(name string, value string, others ...interface{}) {
+func (c *Context) SetCookie(name string, value string, others ...interface{}) {
 	cookie := http.Cookie{}
 	cookie.Name = name
 	cookie.Value = url.QueryEscape(value)
@@ -374,12 +387,12 @@ func (ctx *Context) SetCookie(name string, value string, others ...interface{}) 
 		}
 	}
 
-	ctx.Resp.Header().Add("Set-Cookie", cookie.String())
+	c.Resp.Header().Add("Set-Cookie", cookie.String())
 }
 
 // GetCookie returns given cookie value from request header.
-func (ctx *Context) GetCookie(name string) string {
-	cookie, err := ctx.Req.Cookie(name)
+func (c *Context) GetCookie(name string) string {
+	cookie, err := c.Req.Cookie(name)
 	if err != nil {
 		return ""
 	}
@@ -388,31 +401,31 @@ func (ctx *Context) GetCookie(name string) string {
 }
 
 // GetCookieInt returns cookie result in int type.
-func (ctx *Context) GetCookieInt(name string) int {
-	return com.StrTo(ctx.GetCookie(name)).MustInt()
+func (c *Context) GetCookieInt(name string) int {
+	return com.StrTo(c.GetCookie(name)).MustInt()
 }
 
 // GetCookieInt64 returns cookie result in int64 type.
-func (ctx *Context) GetCookieInt64(name string) int64 {
-	return com.StrTo(ctx.GetCookie(name)).MustInt64()
+func (c *Context) GetCookieInt64(name string) int64 {
+	return com.StrTo(c.GetCookie(name)).MustInt64()
 }
 
 // GetCookieFloat64 returns cookie result in float64 type.
-func (ctx *Context) GetCookieFloat64(name string) float64 {
-	v, _ := strconv.ParseFloat(ctx.GetCookie(name), 64)
+func (c *Context) GetCookieFloat64(name string) float64 {
+	v, _ := strconv.ParseFloat(c.GetCookie(name), 64)
 	return v
 }
 
-func (ctx *Context) setRawContentHeader() {
-	ctx.Resp.Header().Set("Content-Description", "Raw content")
-	ctx.Resp.Header().Set("Content-Type", "text/plain")
-	ctx.Resp.Header().Set("Expires", "0")
-	ctx.Resp.Header().Set("Cache-Control", "must-revalidate")
-	ctx.Resp.Header().Set("Pragma", "public")
+func (c *Context) setRawContentHeader() {
+	c.Resp.Header().Set("Content-Description", "Raw content")
+	c.Resp.Header().Set("Content-Type", "text/plain")
+	c.Resp.Header().Set("Expires", "0")
+	c.Resp.Header().Set("Cache-Control", "must-revalidate")
+	c.Resp.Header().Set("Pragma", "public")
 }
 
 // ServeContent serves given content to response.
-func (ctx *Context) ServeContent(name string, r io.ReadSeeker, params ...interface{}) {
+func (c *Context) ServeContent(name string, r io.ReadSeeker, params ...interface{}) {
 	modtime := time.Now()
 	for _, p := range params {
 		switch v := p.(type) {
@@ -421,12 +434,12 @@ func (ctx *Context) ServeContent(name string, r io.ReadSeeker, params ...interfa
 		}
 	}
 
-	ctx.setRawContentHeader()
-	http.ServeContent(ctx.Resp, ctx.Req.Request, name, modtime, r)
+	c.setRawContentHeader()
+	http.ServeContent(c.Resp, c.Req.Request, name, modtime, r)
 }
 
 // ServeFileContent serves given file as content to response.
-func (ctx *Context) ServeFileContent(file string, names ...string) {
+func (c *Context) ServeFileContent(file string, names ...string) {
 	var name string
 	if len(names) > 0 {
 		name = names[0]
@@ -436,39 +449,39 @@ func (ctx *Context) ServeFileContent(file string, names ...string) {
 
 	f, err := os.Open(file)
 	if err != nil {
-		if ctx.env == PROD {
-			http.Error(ctx.Resp, "Internal Server Error", 500)
+		if c.env == PROD {
+			http.Error(c.Resp, "Internal Server Error", 500)
 		} else {
-			http.Error(ctx.Resp, err.Error(), 500)
+			http.Error(c.Resp, err.Error(), 500)
 		}
 		return
 	}
 	defer f.Close()
 
-	ctx.setRawContentHeader()
-	http.ServeContent(ctx.Resp, ctx.Req.Request, name, time.Now(), f)
+	c.setRawContentHeader()
+	http.ServeContent(c.Resp, c.Req.Request, name, time.Now(), f)
 }
 
 // ServeFile serves given file to response.
-func (ctx *Context) ServeFile(file string, names ...string) {
+func (c *Context) ServeFile(file string, names ...string) {
 	var name string
 	if len(names) > 0 {
 		name = names[0]
 	} else {
 		name = path.Base(file)
 	}
-	ctx.Resp.Header().Set("Content-Description", "File Transfer")
-	ctx.Resp.Header().Set("Content-Type", "application/octet-stream")
-	ctx.Resp.Header().Set("Content-Disposition", "attachment; filename="+name)
-	ctx.Resp.Header().Set("Content-Transfer-Encoding", "binary")
-	ctx.Resp.Header().Set("Expires", "0")
-	ctx.Resp.Header().Set("Cache-Control", "must-revalidate")
-	ctx.Resp.Header().Set("Pragma", "public")
-	http.ServeFile(ctx.Resp, ctx.Req.Request, file)
+	c.Resp.Header().Set("Content-Description", "File Transfer")
+	c.Resp.Header().Set("Content-Type", "application/octet-stream")
+	c.Resp.Header().Set("Content-Disposition", "attachment; filename="+name)
+	c.Resp.Header().Set("Content-Transfer-Encoding", "binary")
+	c.Resp.Header().Set("Expires", "0")
+	c.Resp.Header().Set("Cache-Control", "must-revalidate")
+	c.Resp.Header().Set("Pragma", "public")
+	http.ServeFile(c.Resp, c.Req.Request, file)
 }
 
 // ChangeStaticPath changes static path from old to new one.
-func (ctx *Context) ChangeStaticPath(oldPath, newPath string) {
+func (c *Context) ChangeStaticPath(oldPath, newPath string) {
 	if !filepath.IsAbs(oldPath) {
 		oldPath = filepath.Join(Root, oldPath)
 	}
@@ -482,4 +495,19 @@ func (ctx *Context) ChangeStaticPath(oldPath, newPath string) {
 		*dir = http.Dir(newPath)
 		statics.Set(dir)
 	}
+}
+
+// Printf log.Printf with crid prefixed
+func (c *Context) Printf(format string, v ...interface{}) {
+	c.logger.Output(2, c.CridMark()+" "+fmt.Sprintf(format, v...))
+}
+
+// Println log.Printf with crid prefixed
+func (c *Context) Println(v ...interface{}) {
+	c.logger.Output(2, c.CridMark()+" "+fmt.Sprintln(v...))
+}
+
+// Print log.print with crid prefixed
+func (c *Context) Print(v ...interface{}) {
+	c.logger.Output(2, c.CridMark()+" "+fmt.Sprint(v...))
 }

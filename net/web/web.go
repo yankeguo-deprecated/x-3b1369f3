@@ -29,11 +29,23 @@ import (
 	"magi.systems/net/web/inject"
 )
 
-const _VERSION = "1.2.4.1123"
+var (
+	// Root absolute path of work directory.
+	Root string
+)
 
-func Version() string {
-	return _VERSION
-}
+const (
+	// DEV environment development
+	DEV = "development"
+	// PROD environment production
+	PROD = "production"
+	// TEST environment test
+	TEST = "test"
+	// CridHeaderName name of correlation id header
+	CridHeaderName = "X-Correlation-ID"
+	// CridParamName name of correlation id parameter
+	CridParamName = "_crid"
+)
 
 // Handler can be any callable function.
 // Web attempts to inject services into the handler's argument list,
@@ -97,6 +109,18 @@ func validateAndWrapHandlers(handlers []Handler, wrappers ...func(Handler) Handl
 	}
 
 	return wrappedHandlers
+}
+
+// extractCrid extract X-Correlation-ID
+func extractCrid(req *http.Request) (crid string) {
+	crid = strings.TrimSpace(req.Header.Get(CridHeaderName))
+	if len(crid) == 0 && req.URL != nil && req.URL.Query() != nil {
+		crid = strings.TrimSpace(req.URL.Query().Get(CridParamName))
+	}
+	if len(crid) == 0 {
+		crid = "-"
+	}
+	return
 }
 
 // Web represents the top level web application.
@@ -201,6 +225,8 @@ func (m *Web) createContext(rw http.ResponseWriter, req *http.Request) *Context 
 		Resp:     NewResponseWriter(rw),
 		Render:   &DummyRender{rw},
 		Data:     make(map[string]interface{}),
+		crid:     extractCrid(req),
+		logger:   m.logger,
 	}
 	c.SetParent(m)
 	c.Map(c)
@@ -266,27 +292,6 @@ func (m *Web) SetURLPrefix(prefix string) {
 	m.urlPrefix = prefix
 	m.hasURLPrefix = len(m.urlPrefix) > 0
 }
-
-// ____   ____            .__      ___.   .__
-// \   \ /   /____ _______|__|____ \_ |__ |  |   ____   ______
-//  \   Y   /\__  \\_  __ \  \__  \ | __ \|  | _/ __ \ /  ___/
-//   \     /  / __ \|  | \/  |/ __ \| \_\ \  |_\  ___/ \___ \
-//    \___/  (____  /__|  |__(____  /___  /____/\___  >____  >
-//                \/              \/    \/          \/     \/
-
-const (
-	DEV  = "development"
-	PROD = "production"
-	TEST = "test"
-)
-
-var (
-	// Path of work directory.
-	Root string
-
-	// Flash applies to current request.
-	FlashNow bool
-)
 
 func (m *Web) SetEnv(e string) {
 	if e == DEV || e == PROD || e == TEST {

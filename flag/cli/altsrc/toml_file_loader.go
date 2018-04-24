@@ -9,8 +9,8 @@ import (
 	"fmt"
 	"reflect"
 
-	"magi.systems/encoding/toml"
-	"magi.systems/flag/cli"
+	"islandzero.net/x/encoding/toml"
+	"islandzero.net/x/flag/cli"
 )
 
 type tomlMap struct {

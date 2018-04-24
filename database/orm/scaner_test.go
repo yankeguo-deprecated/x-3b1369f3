@@ -6,7 +6,7 @@ import (
 	"errors"
 	"testing"
 
-	"magi.systems/database/orm"
+	"islandzero.net/x/database/orm"
 )
 
 func TestScannableSlices(t *testing.T) {

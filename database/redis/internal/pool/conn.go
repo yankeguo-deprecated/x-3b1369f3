@@ -5,7 +5,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"magi.systems/database/redis/internal/proto"
+	"islandzero.net/x/database/redis/internal/proto"
 )
 
 var noDeadline = time.Time{}

@@ -4,7 +4,7 @@ import (
 	"errors"
 	"testing"
 
-	"magi.systems/database/orm"
+	"islandzero.net/x/database/orm"
 )
 
 func TestErrorsCanBeUsedOutsideOrm(t *testing.T) {

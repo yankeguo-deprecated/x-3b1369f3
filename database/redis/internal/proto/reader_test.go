@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"magi.systems/database/redis/internal/proto"
+	"islandzero.net/x/database/redis/internal/proto"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"

@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"magi.systems/database/redis/internal/pool"
+	"islandzero.net/x/database/redis/internal/pool"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"

@@ -26,8 +26,8 @@ import (
 	"sync"
 	"time"
 
-	"magi.systems/com"
-	"magi.systems/net/web"
+	"islandzero.net/x/com"
+	"islandzero.net/x/net/web"
 )
 
 // Item represents a cache item.

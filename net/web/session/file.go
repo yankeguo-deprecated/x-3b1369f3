@@ -25,7 +25,7 @@ import (
 	"sync"
 	"time"
 
-	"magi.systems/com"
+	"islandzero.net/x/com"
 )
 
 // FileStore represents a file session store implementation.

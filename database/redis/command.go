@@ -7,10 +7,10 @@ import (
 	"strings"
 	"time"
 
-	"magi.systems/database/redis/internal"
-	"magi.systems/database/redis/internal/pool"
-	"magi.systems/database/redis/internal/proto"
-	"magi.systems/database/redis/internal/util"
+	"islandzero.net/x/database/redis/internal"
+	"islandzero.net/x/database/redis/internal/pool"
+	"islandzero.net/x/database/redis/internal/proto"
+	"islandzero.net/x/database/redis/internal/util"
 )
 
 type Cmder interface {

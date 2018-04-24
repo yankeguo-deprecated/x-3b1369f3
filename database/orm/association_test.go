@@ -7,7 +7,7 @@ import (
 	"sort"
 	"testing"
 
-	"magi.systems/database/orm"
+	"islandzero.net/x/database/orm"
 )
 
 func TestBelongsTo(t *testing.T) {

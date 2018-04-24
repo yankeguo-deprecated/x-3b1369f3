@@ -20,8 +20,8 @@ import (
 	"testing"
 
 	. "github.com/smartystreets/goconvey/convey"
-	"magi.systems/net/web"
-	"magi.systems/net/web/cache"
+	"islandzero.net/x/net/web"
+	"islandzero.net/x/net/web/cache"
 )
 
 func Test_Captcha(t *testing.T) {

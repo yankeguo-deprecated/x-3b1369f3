@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"magi.systems/database/orm"
+	"islandzero.net/x/database/orm"
 )
 
 func TestUpdate(t *testing.T) {

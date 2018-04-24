@@ -19,7 +19,7 @@ import (
 	"net/http"
 	"reflect"
 
-	"magi.systems/net/web/inject"
+	"islandzero.net/x/net/web/inject"
 )
 
 // ReturnHandler is a service that Martini provides that is called

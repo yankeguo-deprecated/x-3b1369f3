@@ -3,7 +3,7 @@ package orm_test
 import (
 	"testing"
 
-	"magi.systems/database/orm"
+	"islandzero.net/x/database/orm"
 )
 
 type CalculateField struct {

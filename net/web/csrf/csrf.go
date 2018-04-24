@@ -22,9 +22,9 @@ import (
 	"net/http"
 	"time"
 
-	"magi.systems/com"
-	"magi.systems/net/web"
-	"magi.systems/net/web/session"
+	"islandzero.net/x/com"
+	"islandzero.net/x/net/web"
+	"islandzero.net/x/net/web/session"
 )
 
 // CSRF represents a CSRF service and is used to get the current token and validate a suspect token.

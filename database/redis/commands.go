@@ -5,7 +5,7 @@ import (
 	"io"
 	"time"
 
-	"magi.systems/database/redis/internal"
+	"islandzero.net/x/database/redis/internal"
 )
 
 func readTimeout(timeout time.Duration) time.Duration {

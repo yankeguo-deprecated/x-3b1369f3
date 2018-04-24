@@ -3,7 +3,7 @@ package orm_test
 import (
 	"errors"
 
-	"magi.systems/database/orm"
+	"islandzero.net/x/database/orm"
 
 	"reflect"
 	"testing"

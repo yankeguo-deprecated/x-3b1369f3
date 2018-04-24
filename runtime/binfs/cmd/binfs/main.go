@@ -87,7 +87,7 @@ func main() {
 	l(`import (`)
 	l(`  "time"`)
 	l(``)
-	l(`  "magi.systems/runtime/binfs"`)
+	l(`  "islandzero.net/x/runtime/binfs"`)
 	l(`)`)
 	l(``)
 	l(`var (`)

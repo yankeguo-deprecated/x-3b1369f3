@@ -4,7 +4,7 @@ import (
 	"net"
 	"time"
 
-	"magi.systems/database/redis/internal/pool"
+	"islandzero.net/x/database/redis/internal/pool"
 )
 
 func (c *baseClient) Pool() pool.Pooler {

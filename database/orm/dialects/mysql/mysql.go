@@ -1,3 +1,3 @@
 package mysql
 
-import _ "magi.systems/database/mysql"
+import _ "islandzero.net/x/database/mysql"

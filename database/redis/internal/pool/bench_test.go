@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"magi.systems/database/redis/internal/pool"
+	"islandzero.net/x/database/redis/internal/pool"
 )
 
 func benchmarkPoolGetPut(b *testing.B, poolSize int) {

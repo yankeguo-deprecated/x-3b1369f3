@@ -3,7 +3,7 @@ package redis
 import (
 	"sync"
 
-	"magi.systems/database/redis/internal/pool"
+	"islandzero.net/x/database/redis/internal/pool"
 )
 
 type pipelineExecer func([]Cmder) error

@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"magi.systems/flag/cli"
+	"islandzero.net/x/flag/cli"
 )
 
 // MapInputSource implements InputSourceContext to return

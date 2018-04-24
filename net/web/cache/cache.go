@@ -19,7 +19,7 @@ package cache
 import (
 	"fmt"
 
-	"magi.systems/net/web"
+	"islandzero.net/x/net/web"
 )
 
 const _VERSION = "0.3.0"

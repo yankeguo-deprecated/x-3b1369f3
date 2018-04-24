@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"magi.systems/database/redis/internal/pool"
+	"islandzero.net/x/database/redis/internal/pool"
 )
 
 type Options struct {

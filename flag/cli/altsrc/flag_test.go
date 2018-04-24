@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	"magi.systems/flag/cli"
+	"islandzero.net/x/flag/cli"
 )
 
 type testApplyInputSource struct {

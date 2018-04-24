@@ -1,6 +1,6 @@
 package internal
 
-import "magi.systems/database/redis/internal/util"
+import "islandzero.net/x/database/redis/internal/util"
 
 func ToLower(s string) string {
 	if isLower(s) {

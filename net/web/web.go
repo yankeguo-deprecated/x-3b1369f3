@@ -25,8 +25,8 @@ import (
 	"reflect"
 	"strings"
 
-	"magi.systems/com"
-	"magi.systems/net/web/inject"
+	"islandzero.net/x/com"
+	"islandzero.net/x/net/web/inject"
 )
 
 var (

@@ -14,9 +14,9 @@ import (
 	"runtime"
 	"strings"
 
-	"magi.systems/flag/cli"
+	"islandzero.net/x/flag/cli"
 
-	"magi.systems/encoding/yaml"
+	"islandzero.net/x/encoding/yaml"
 )
 
 type yamlSourceContext struct {

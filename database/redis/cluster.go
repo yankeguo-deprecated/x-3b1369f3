@@ -11,11 +11,11 @@ import (
 	"sync/atomic"
 	"time"
 
-	"magi.systems/database/redis/internal"
-	"magi.systems/database/redis/internal/hashtag"
-	"magi.systems/database/redis/internal/pool"
-	"magi.systems/database/redis/internal/proto"
-	"magi.systems/database/redis/internal/singleflight"
+	"islandzero.net/x/database/redis/internal"
+	"islandzero.net/x/database/redis/internal/hashtag"
+	"islandzero.net/x/database/redis/internal/pool"
+	"islandzero.net/x/database/redis/internal/proto"
+	"islandzero.net/x/database/redis/internal/singleflight"
 )
 
 var errClusterNoNodes = fmt.Errorf("redis: cluster has no nodes")

@@ -29,8 +29,8 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	"magi.systems/com"
-	"magi.systems/net/web"
+	"islandzero.net/x/com"
+	"islandzero.net/x/net/web"
 )
 
 const _VERSION = "0.6.0"

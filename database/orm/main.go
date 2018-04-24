@@ -32,15 +32,15 @@ type DB struct {
 
 // Open initialize a new db connection, need to import driver first, e.g:
 //
-//     import _ "magi.systems/database/mysql"
+//     import _ "islandzero.net/x/database/mysql"
 //     func main() {
 //       db, err := orm.Open("mysql", "user:password@/dbname?charset=utf8&parseTime=True&loc=Local")
 //     }
 // orm has wrapped some drivers, for easier to remember driver's import path, so you could import the mysql driver with
-//    import _ "magi.systems/database/orm/dialects/mysql"
-//    // import _ "magi.systems/database/orm/dialects/postgres"
-//    // import _ "magi.systems/database/orm/dialects/sqlite"
-//    // import _ "magi.systems/database/orm/dialects/mssql"
+//    import _ "islandzero.net/x/database/orm/dialects/mysql"
+//    // import _ "islandzero.net/x/database/orm/dialects/postgres"
+//    // import _ "islandzero.net/x/database/orm/dialects/sqlite"
+//    // import _ "islandzero.net/x/database/orm/dialects/mssql"
 func Open(dialect string, args ...interface{}) (db *DB, err error) {
 	if len(args) == 0 {
 		err = errors.New("invalid database source")

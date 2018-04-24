@@ -22,9 +22,9 @@ import (
 	"path"
 	"strings"
 
-	"magi.systems/com"
-	"magi.systems/net/web"
-	"magi.systems/net/web/cache"
+	"islandzero.net/x/com"
+	"islandzero.net/x/net/web"
+	"islandzero.net/x/net/web/cache"
 )
 
 var (

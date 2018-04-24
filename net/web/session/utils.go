@@ -21,7 +21,7 @@ import (
 	"encoding/gob"
 	"io"
 
-	"magi.systems/com"
+	"islandzero.net/x/com"
 )
 
 func init() {

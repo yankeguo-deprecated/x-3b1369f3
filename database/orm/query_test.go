@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"reflect"
 
-	"magi.systems/database/orm"
+	"islandzero.net/x/database/orm"
 
 	"testing"
 	"time"

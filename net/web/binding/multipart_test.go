@@ -25,7 +25,7 @@ import (
 	"testing"
 
 	. "github.com/smartystreets/goconvey/convey"
-	"magi.systems/net/web"
+	"islandzero.net/x/net/web"
 )
 
 var multipartFormTestCases = []multipartFormTestCase{

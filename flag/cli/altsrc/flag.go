@@ -6,7 +6,7 @@ import (
 	"strings"
 	"syscall"
 
-	"magi.systems/flag/cli"
+	"islandzero.net/x/flag/cli"
 )
 
 // FlagInputSourceExtension is an extension interface of cli.Flag that

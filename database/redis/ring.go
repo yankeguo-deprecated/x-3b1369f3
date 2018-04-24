@@ -10,10 +10,10 @@ import (
 	"sync/atomic"
 	"time"
 
-	"magi.systems/database/redis/internal"
-	"magi.systems/database/redis/internal/consistenthash"
-	"magi.systems/database/redis/internal/hashtag"
-	"magi.systems/database/redis/internal/pool"
+	"islandzero.net/x/database/redis/internal"
+	"islandzero.net/x/database/redis/internal/consistenthash"
+	"islandzero.net/x/database/redis/internal/hashtag"
+	"islandzero.net/x/database/redis/internal/pool"
 )
 
 const nreplicas = 100

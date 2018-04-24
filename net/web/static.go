@@ -24,7 +24,7 @@ import (
 	"strings"
 	"sync"
 
-	"magi.systems/runtime/binfs"
+	"islandzero.net/x/runtime/binfs"
 )
 
 // StaticOptions is a struct for specifying configuration options for the web.Static middleware.
@@ -41,7 +41,7 @@ type StaticOptions struct {
 	// ETag defines if we should add an ETag header
 	// https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching#validating-cached-responses-with-etags
 	ETag bool
-	// BinFS defines if use magi.systems/runtime/binfs
+	// BinFS defines if use islandzero.net/x/runtime/binfs
 	BinFS bool
 	// FileSystem is the interface for supporting any implmentation of file system.
 	FileSystem http.FileSystem

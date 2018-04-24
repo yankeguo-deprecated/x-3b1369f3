@@ -7,8 +7,8 @@ import (
 	"sync"
 	"time"
 
-	"magi.systems/database/redis/internal"
-	"magi.systems/database/redis/internal/pool"
+	"islandzero.net/x/database/redis/internal"
+	"islandzero.net/x/database/redis/internal/pool"
 )
 
 //------------------------------------------------------------------------------

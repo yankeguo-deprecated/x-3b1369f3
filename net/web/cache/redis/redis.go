@@ -19,10 +19,10 @@ import (
 	"fmt"
 	"time"
 
-	"magi.systems/com"
+	"islandzero.net/x/com"
 
-	"magi.systems/database/redis"
-	"magi.systems/net/web/cache"
+	"islandzero.net/x/database/redis"
+	"islandzero.net/x/net/web/cache"
 )
 
 // RedisCacher represents a redis cache adapter implementation.

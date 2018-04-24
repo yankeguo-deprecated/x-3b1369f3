@@ -9,8 +9,8 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
-	"magi.systems/database/redis"
-	"magi.systems/database/redis/internal/proto"
+	"islandzero.net/x/database/redis"
+	"islandzero.net/x/database/redis/internal/proto"
 )
 
 var _ = Describe("Commands", func() {

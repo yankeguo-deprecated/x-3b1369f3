@@ -20,7 +20,7 @@ import (
 
 	neturl "net/url"
 
-	"magi.systems/com"
+	"islandzero.net/x/com"
 )
 
 type patternType int8

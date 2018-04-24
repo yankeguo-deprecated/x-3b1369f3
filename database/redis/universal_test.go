@@ -4,7 +4,7 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
-	"magi.systems/database/redis"
+	"islandzero.net/x/database/redis"
 )
 
 var _ = Describe("UniversalClient", func() {

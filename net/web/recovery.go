@@ -23,7 +23,7 @@ import (
 	"net/http"
 	"runtime"
 
-	"magi.systems/net/web/inject"
+	"islandzero.net/x/net/web/inject"
 )
 
 const (

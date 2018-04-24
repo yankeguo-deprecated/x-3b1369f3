@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	"magi.systems/runtime/binfs"
+	"islandzero.net/x/runtime/binfs"
 )
 
 func main() {

@@ -21,7 +21,7 @@ import (
 	"testing"
 
 	. "github.com/smartystreets/goconvey/convey"
-	"magi.systems/net/web/inject"
+	"islandzero.net/x/net/web/inject"
 )
 
 type SpecialString interface {

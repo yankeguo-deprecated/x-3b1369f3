@@ -20,8 +20,8 @@ import (
 	"sync"
 	"time"
 
-	"magi.systems/database/redis"
-	"magi.systems/net/web/session"
+	"islandzero.net/x/database/redis"
+	"islandzero.net/x/net/web/session"
 )
 
 // RedisStore represents a redis session store implementation.

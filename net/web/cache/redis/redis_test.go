@@ -21,10 +21,10 @@ import (
 	"time"
 
 	. "github.com/smartystreets/goconvey/convey"
-	"magi.systems/com"
-	"magi.systems/net/web"
+	"islandzero.net/x/com"
+	"islandzero.net/x/net/web"
 
-	"magi.systems/net/web/cache"
+	"islandzero.net/x/net/web/cache"
 )
 
 func Test_RedisCacher(t *testing.T) {

@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"magi.systems/text/inflection"
+	"islandzero.net/x/text/inflection"
 )
 
 // DefaultTableNameHandler default table name handler

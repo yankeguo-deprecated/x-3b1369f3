@@ -7,9 +7,9 @@ import (
 	"os"
 	"time"
 
-	"magi.systems/database/redis/internal"
-	"magi.systems/database/redis/internal/pool"
-	"magi.systems/database/redis/internal/proto"
+	"islandzero.net/x/database/redis/internal"
+	"islandzero.net/x/database/redis/internal/pool"
+	"islandzero.net/x/database/redis/internal/proto"
 )
 
 // Nil reply Redis returns when key does not exist.

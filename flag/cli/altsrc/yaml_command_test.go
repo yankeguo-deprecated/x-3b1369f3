@@ -11,7 +11,7 @@ import (
 	"os"
 	"testing"
 
-	"magi.systems/flag/cli"
+	"islandzero.net/x/flag/cli"
 )
 
 func TestCommandYamlFileTest(t *testing.T) {

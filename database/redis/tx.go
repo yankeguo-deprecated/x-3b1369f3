@@ -1,8 +1,8 @@
 package redis
 
 import (
-	"magi.systems/database/redis/internal/pool"
-	"magi.systems/database/redis/internal/proto"
+	"islandzero.net/x/database/redis/internal/pool"
+	"islandzero.net/x/database/redis/internal/proto"
 )
 
 // TxFailedErr transaction redis failed.

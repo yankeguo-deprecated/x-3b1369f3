@@ -7,7 +7,7 @@ import (
 	"reflect"
 	"testing"
 
-	"magi.systems/database/orm"
+	"islandzero.net/x/database/orm"
 )
 
 func getPreloadUser(name string) *User {

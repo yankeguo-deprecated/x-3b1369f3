@@ -10,8 +10,8 @@ import (
 	"testing"
 	"time"
 
-	"magi.systems/database/redis"
-	"magi.systems/database/redis/internal/hashtag"
+	"islandzero.net/x/database/redis"
+	"islandzero.net/x/database/redis/internal/hashtag"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"

@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"magi.systems/database/orm"
+	"islandzero.net/x/database/orm"
 )
 
 func NameIn1And2(d *orm.DB) *orm.DB {

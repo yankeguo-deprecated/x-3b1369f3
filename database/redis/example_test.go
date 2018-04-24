@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	"magi.systems/database/redis"
+	"islandzero.net/x/database/redis"
 )
 
 var client *redis.Client

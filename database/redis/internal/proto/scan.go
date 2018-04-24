@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"reflect"
 
-	"magi.systems/database/redis/internal/util"
+	"islandzero.net/x/database/redis/internal/util"
 )
 
 func Scan(b []byte, v interface{}) error {

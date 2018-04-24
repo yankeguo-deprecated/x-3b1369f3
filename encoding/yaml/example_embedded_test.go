@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"magi.systems/encoding/yaml"
+	"islandzero.net/x/encoding/yaml"
 )
 
 // An example showing how to unmarshal embedded

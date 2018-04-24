@@ -3,7 +3,7 @@ package altsrc
 import (
 	"flag"
 
-	"magi.systems/flag/cli"
+	"islandzero.net/x/flag/cli"
 )
 
 // WARNING: This file is generated!

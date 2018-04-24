@@ -23,7 +23,7 @@ import (
 	"testing"
 
 	. "github.com/smartystreets/goconvey/convey"
-	"magi.systems/net/web"
+	"islandzero.net/x/net/web"
 )
 
 // When binding from Form data, testing the type of data to bind

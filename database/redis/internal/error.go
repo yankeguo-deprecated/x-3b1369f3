@@ -5,7 +5,7 @@ import (
 	"net"
 	"strings"
 
-	"magi.systems/database/redis/internal/proto"
+	"islandzero.net/x/database/redis/internal/proto"
 )
 
 func IsRetryableError(err error, retryNetError bool) bool {

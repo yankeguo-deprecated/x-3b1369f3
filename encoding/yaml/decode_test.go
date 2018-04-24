@@ -9,7 +9,7 @@ import (
 	"time"
 
 	. "gopkg.in/check.v1"
-	"magi.systems/encoding/yaml"
+	"islandzero.net/x/encoding/yaml"
 )
 
 var unmarshalIntTest = 123

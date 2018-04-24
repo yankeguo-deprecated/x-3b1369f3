@@ -12,12 +12,12 @@ import (
 	"time"
 
 	"github.com/erikstmartin/go-testdb"
-	"magi.systems/database/orm"
-	_ "magi.systems/database/orm/dialects/mssql"
-	_ "magi.systems/database/orm/dialects/mysql"
-	"magi.systems/database/orm/dialects/postgres"
-	_ "magi.systems/database/orm/dialects/sqlite3"
-	"magi.systems/time/now"
+	"islandzero.net/x/database/orm"
+	_ "islandzero.net/x/database/orm/dialects/mssql"
+	_ "islandzero.net/x/database/orm/dialects/mysql"
+	"islandzero.net/x/database/orm/dialects/postgres"
+	_ "islandzero.net/x/database/orm/dialects/sqlite3"
+	"islandzero.net/x/time/now"
 )
 
 var (

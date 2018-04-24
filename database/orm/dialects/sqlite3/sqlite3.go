@@ -1,3 +1,3 @@
 package sqlite
 
-import _ "magi.systems/database/sqlite3"
+import _ "islandzero.net/x/database/sqlite3"

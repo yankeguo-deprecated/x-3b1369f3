@@ -3,7 +3,7 @@ package altsrc
 import (
 	"time"
 
-	"magi.systems/flag/cli"
+	"islandzero.net/x/flag/cli"
 )
 
 // InputSourceContext is an interface used to allow

@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"magi.systems/flag/cli"
+	"islandzero.net/x/flag/cli"
 )
 
 // NewJSONSourceFromFlagFunc returns a func that takes a cli.Context

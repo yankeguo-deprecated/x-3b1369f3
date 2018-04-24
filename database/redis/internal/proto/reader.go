@@ -6,7 +6,7 @@ import (
 	"io"
 	"strconv"
 
-	"magi.systems/database/redis/internal/util"
+	"islandzero.net/x/database/redis/internal/util"
 )
 
 const bytesAllocLimit = 1024 * 1024 // 1mb

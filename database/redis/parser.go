@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"time"
 
-	"magi.systems/database/redis/internal/proto"
+	"islandzero.net/x/database/redis/internal/proto"
 )
 
 // Implements proto.MultiBulkParse

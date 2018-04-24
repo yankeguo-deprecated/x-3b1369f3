@@ -17,7 +17,7 @@ package captcha
 import (
 	"testing"
 
-	"magi.systems/com"
+	"islandzero.net/x/com"
 )
 
 type byteCounter struct {

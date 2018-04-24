@@ -939,7 +939,7 @@ func TestDecodeErrors(t *testing.T) {
 		`x='''`,
 
 		// Cases found by fuzzing in
-		// https://magi.systems/encoding/toml/issues/155.
+		// https://islandzero.net/x/encoding/toml/issues/155.
 		`""�`,   // used to panic with index out of range
 		`e="""`, // used to hang
 	} {
@@ -951,7 +951,7 @@ func TestDecodeErrors(t *testing.T) {
 	}
 }
 
-// Test for https://magi.systems/encoding/toml/pull/166.
+// Test for https://islandzero.net/x/encoding/toml/pull/166.
 func TestDecodeBoolArray(t *testing.T) {
 	for _, tt := range []struct {
 		s    string

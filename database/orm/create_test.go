@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"magi.systems/time/now"
+	"islandzero.net/x/time/now"
 )
 
 func TestCreate(t *testing.T) {

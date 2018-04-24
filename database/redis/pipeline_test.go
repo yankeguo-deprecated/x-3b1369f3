@@ -1,7 +1,7 @@
 package redis_test
 
 import (
-	"magi.systems/database/redis"
+	"islandzero.net/x/database/redis"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"

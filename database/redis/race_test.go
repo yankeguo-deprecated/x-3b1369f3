@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"islandzero.net/x/database/redis"
+	"landzero.net/x/database/redis"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"

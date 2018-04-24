@@ -1,8 +1,8 @@
 package redis
 
 import (
-	"islandzero.net/x/database/redis/internal/pool"
-	"islandzero.net/x/database/redis/internal/proto"
+	"landzero.net/x/database/redis/internal/pool"
+	"landzero.net/x/database/redis/internal/proto"
 )
 
 // TxFailedErr transaction redis failed.

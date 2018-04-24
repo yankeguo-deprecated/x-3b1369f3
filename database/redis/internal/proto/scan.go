@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"reflect"
 
-	"islandzero.net/x/database/redis/internal/util"
+	"landzero.net/x/database/redis/internal/util"
 )
 
 func Scan(b []byte, v interface{}) error {

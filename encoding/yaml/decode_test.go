@@ -9,7 +9,7 @@ import (
 	"time"
 
 	. "gopkg.in/check.v1"
-	"islandzero.net/x/encoding/yaml"
+	"landzero.net/x/encoding/yaml"
 )
 
 var unmarshalIntTest = 123

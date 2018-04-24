@@ -4,7 +4,7 @@ import (
 	"net"
 	"time"
 
-	"islandzero.net/x/database/redis/internal/pool"
+	"landzero.net/x/database/redis/internal/pool"
 )
 
 func (c *baseClient) Pool() pool.Pooler {

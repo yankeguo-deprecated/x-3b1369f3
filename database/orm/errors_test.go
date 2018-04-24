@@ -4,7 +4,7 @@ import (
 	"errors"
 	"testing"
 
-	"islandzero.net/x/database/orm"
+	"landzero.net/x/database/orm"
 )
 
 func TestErrorsCanBeUsedOutsideOrm(t *testing.T) {

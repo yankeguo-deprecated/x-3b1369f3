@@ -6,8 +6,8 @@ import (
 	"sync"
 	"time"
 
-	"islandzero.net/x/database/redis/internal"
-	"islandzero.net/x/database/redis/internal/pool"
+	"landzero.net/x/database/redis/internal"
+	"landzero.net/x/database/redis/internal/pool"
 )
 
 // PubSub implements Pub/Sub commands as described in

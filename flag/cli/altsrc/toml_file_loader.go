@@ -9,8 +9,8 @@ import (
 	"fmt"
 	"reflect"
 
-	"islandzero.net/x/encoding/toml"
-	"islandzero.net/x/flag/cli"
+	"landzero.net/x/encoding/toml"
+	"landzero.net/x/flag/cli"
 )
 
 type tomlMap struct {

@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"islandzero.net/x/flag/cli"
+	"landzero.net/x/flag/cli"
 )
 
 // NewJSONSourceFromFlagFunc returns a func that takes a cli.Context

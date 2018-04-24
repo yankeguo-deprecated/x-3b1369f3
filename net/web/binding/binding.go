@@ -29,8 +29,8 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	"islandzero.net/x/com"
-	"islandzero.net/x/net/web"
+	"landzero.net/x/com"
+	"landzero.net/x/net/web"
 )
 
 const _VERSION = "0.6.0"

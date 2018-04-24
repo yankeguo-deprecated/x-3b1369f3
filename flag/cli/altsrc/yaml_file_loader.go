@@ -14,9 +14,9 @@ import (
 	"runtime"
 	"strings"
 
-	"islandzero.net/x/flag/cli"
+	"landzero.net/x/flag/cli"
 
-	"islandzero.net/x/encoding/yaml"
+	"landzero.net/x/encoding/yaml"
 )
 
 type yamlSourceContext struct {

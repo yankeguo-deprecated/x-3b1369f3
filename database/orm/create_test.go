@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"islandzero.net/x/time/now"
+	"landzero.net/x/time/now"
 )
 
 func TestCreate(t *testing.T) {

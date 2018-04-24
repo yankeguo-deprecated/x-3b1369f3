@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"islandzero.net/x/database/redis"
+	"landzero.net/x/database/redis"
 )
 
 func benchmarkRedisClient(poolSize int) *redis.Client {

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"islandzero.net/x/encoding/yaml"
+	"landzero.net/x/encoding/yaml"
 )
 
 // An example showing how to unmarshal embedded

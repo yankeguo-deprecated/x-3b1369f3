@@ -22,7 +22,7 @@ import (
 	"time"
 
 	. "github.com/smartystreets/goconvey/convey"
-	"islandzero.net/x/net/web"
+	"landzero.net/x/net/web"
 )
 
 func Test_Version(t *testing.T) {

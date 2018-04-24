@@ -21,7 +21,7 @@ import (
 	"encoding/gob"
 	"io"
 
-	"islandzero.net/x/com"
+	"landzero.net/x/com"
 )
 
 func init() {

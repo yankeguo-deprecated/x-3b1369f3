@@ -25,7 +25,7 @@ import (
 	"sync"
 	"time"
 
-	"islandzero.net/x/com"
+	"landzero.net/x/com"
 )
 
 // FileStore represents a file session store implementation.

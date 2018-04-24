@@ -6,7 +6,7 @@ import (
 	"errors"
 	"testing"
 
-	"islandzero.net/x/database/orm"
+	"landzero.net/x/database/orm"
 )
 
 func TestScannableSlices(t *testing.T) {

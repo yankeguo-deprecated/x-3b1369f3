@@ -87,7 +87,7 @@ func main() {
 	l(`import (`)
 	l(`  "time"`)
 	l(``)
-	l(`  "islandzero.net/x/runtime/binfs"`)
+	l(`  "landzero.net/x/runtime/binfs"`)
 	l(`)`)
 	l(``)
 	l(`var (`)

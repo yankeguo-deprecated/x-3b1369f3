@@ -7,7 +7,7 @@ import (
 	"sort"
 	"testing"
 
-	"islandzero.net/x/database/orm"
+	"landzero.net/x/database/orm"
 )
 
 func TestBelongsTo(t *testing.T) {

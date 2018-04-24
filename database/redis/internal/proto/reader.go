@@ -6,7 +6,7 @@ import (
 	"io"
 	"strconv"
 
-	"islandzero.net/x/database/redis/internal/util"
+	"landzero.net/x/database/redis/internal/util"
 )
 
 const bytesAllocLimit = 1024 * 1024 // 1mb

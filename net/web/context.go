@@ -31,8 +31,8 @@ import (
 	"strings"
 	"time"
 
-	"islandzero.net/x/com"
-	"islandzero.net/x/net/web/inject"
+	"landzero.net/x/com"
+	"landzero.net/x/net/web/inject"
 )
 
 // Locale reprents a localization interface.

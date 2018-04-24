@@ -31,8 +31,8 @@ import (
 	"sync"
 	"time"
 
-	"islandzero.net/x/com"
-	"islandzero.net/x/runtime/binfs"
+	"landzero.net/x/com"
+	"landzero.net/x/runtime/binfs"
 )
 
 const (
@@ -111,7 +111,7 @@ type (
 		PrefixXML []byte
 		// Allows changing of output to XHTML instead of HTML. Default is "text/html"
 		HTMLContentType string
-		// BinFS defines is islandzero.net/x/runtime/binfs is using
+		// BinFS defines is landzero.net/x/runtime/binfs is using
 		BinFS bool
 		// TemplateFileSystem is the interface for supporting any implmentation of template file system.
 		TemplateFileSystem

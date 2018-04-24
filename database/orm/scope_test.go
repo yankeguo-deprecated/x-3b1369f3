@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"islandzero.net/x/database/orm"
+	"landzero.net/x/database/orm"
 )
 
 func NameIn1And2(d *orm.DB) *orm.DB {

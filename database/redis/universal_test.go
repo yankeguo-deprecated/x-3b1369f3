@@ -4,7 +4,7 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
-	"islandzero.net/x/database/redis"
+	"landzero.net/x/database/redis"
 )
 
 var _ = Describe("UniversalClient", func() {

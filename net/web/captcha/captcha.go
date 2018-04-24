@@ -22,9 +22,9 @@ import (
 	"path"
 	"strings"
 
-	"islandzero.net/x/com"
-	"islandzero.net/x/net/web"
-	"islandzero.net/x/net/web/cache"
+	"landzero.net/x/com"
+	"landzero.net/x/net/web"
+	"landzero.net/x/net/web/cache"
 )
 
 var (

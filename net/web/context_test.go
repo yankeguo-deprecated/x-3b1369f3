@@ -24,7 +24,7 @@ import (
 	"testing"
 	"time"
 
-	"islandzero.net/x/com"
+	"landzero.net/x/com"
 
 	. "github.com/smartystreets/goconvey/convey"
 )

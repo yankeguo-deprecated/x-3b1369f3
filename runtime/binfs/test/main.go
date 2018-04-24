@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	"islandzero.net/x/runtime/binfs"
+	"landzero.net/x/runtime/binfs"
 )
 
 func main() {

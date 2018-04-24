@@ -3,7 +3,7 @@ package altsrc
 import (
 	"time"
 
-	"islandzero.net/x/flag/cli"
+	"landzero.net/x/flag/cli"
 )
 
 // InputSourceContext is an interface used to allow

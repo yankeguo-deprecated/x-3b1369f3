@@ -7,7 +7,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"islandzero.net/x/database/redis/internal"
+	"landzero.net/x/database/redis/internal"
 )
 
 var ErrClosed = errors.New("redis: client is closed")

@@ -6,7 +6,7 @@ import (
 	"os"
 	"testing"
 
-	"islandzero.net/x/flag/cli"
+	"landzero.net/x/flag/cli"
 )
 
 const (

@@ -23,7 +23,7 @@ import (
 	"net/url"
 	"time"
 
-	"islandzero.net/x/net/web"
+	"landzero.net/x/net/web"
 )
 
 const _VERSION = "0.3.0"

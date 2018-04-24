@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"reflect"
 
-	"islandzero.net/x/database/orm"
+	"landzero.net/x/database/orm"
 
 	"testing"
 	"time"

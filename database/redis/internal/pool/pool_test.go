@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"islandzero.net/x/database/redis/internal/pool"
+	"landzero.net/x/database/redis/internal/pool"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"

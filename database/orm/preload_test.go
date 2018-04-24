@@ -7,7 +7,7 @@ import (
 	"reflect"
 	"testing"
 
-	"islandzero.net/x/database/orm"
+	"landzero.net/x/database/orm"
 )
 
 func getPreloadUser(name string) *User {

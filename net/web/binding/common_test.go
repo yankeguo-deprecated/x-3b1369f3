@@ -18,7 +18,7 @@ package binding
 import (
 	"mime/multipart"
 
-	"islandzero.net/x/net/web"
+	"landzero.net/x/net/web"
 )
 
 // These types are mostly contrived examples, but they're used

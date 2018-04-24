@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	"islandzero.net/x/database/redis"
+	"landzero.net/x/database/redis"
 )
 
 var client *redis.Client

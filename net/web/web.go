@@ -25,8 +25,8 @@ import (
 	"reflect"
 	"strings"
 
-	"islandzero.net/x/com"
-	"islandzero.net/x/net/web/inject"
+	"landzero.net/x/com"
+	"landzero.net/x/net/web/inject"
 )
 
 var (

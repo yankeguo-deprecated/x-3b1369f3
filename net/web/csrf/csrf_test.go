@@ -23,9 +23,9 @@ import (
 	"testing"
 
 	. "github.com/smartystreets/goconvey/convey"
-	"islandzero.net/x/com"
-	"islandzero.net/x/net/web"
-	"islandzero.net/x/net/web/session"
+	"landzero.net/x/com"
+	"landzero.net/x/net/web"
+	"landzero.net/x/net/web/session"
 )
 
 func Test_GenerateToken(t *testing.T) {

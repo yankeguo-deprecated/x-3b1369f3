@@ -3,7 +3,7 @@ package redis_test
 import (
 	"fmt"
 
-	"islandzero.net/x/database/redis"
+	"landzero.net/x/database/redis"
 )
 
 func Example_instrumentation() {

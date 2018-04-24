@@ -1,6 +1,6 @@
 package internal
 
-import "islandzero.net/x/database/redis/internal/util"
+import "landzero.net/x/database/redis/internal/util"
 
 func ToLower(s string) string {
 	if isLower(s) {

@@ -3,7 +3,7 @@ package orm_test
 import (
 	"testing"
 
-	"islandzero.net/x/database/orm"
+	"landzero.net/x/database/orm"
 )
 
 func TestToDBNameGenerateFriendlyName(t *testing.T) {

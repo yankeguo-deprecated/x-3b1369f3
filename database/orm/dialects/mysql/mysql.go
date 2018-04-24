@@ -1,3 +1,3 @@
 package mysql
 
-import _ "islandzero.net/x/database/mysql"
+import _ "landzero.net/x/database/mysql"

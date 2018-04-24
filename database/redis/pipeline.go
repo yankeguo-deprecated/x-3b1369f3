@@ -3,7 +3,7 @@ package redis
 import (
 	"sync"
 
-	"islandzero.net/x/database/redis/internal/pool"
+	"landzero.net/x/database/redis/internal/pool"
 )
 
 type pipelineExecer func([]Cmder) error

@@ -5,7 +5,7 @@ import (
 	"net"
 	"strings"
 
-	"islandzero.net/x/database/redis/internal/proto"
+	"landzero.net/x/database/redis/internal/proto"
 )
 
 func IsRetryableError(err error, retryNetError bool) bool {

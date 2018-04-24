@@ -5,7 +5,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"islandzero.net/x/database/redis/internal/proto"
+	"landzero.net/x/database/redis/internal/proto"
 )
 
 var noDeadline = time.Time{}

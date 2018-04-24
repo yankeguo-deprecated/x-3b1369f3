@@ -12,7 +12,7 @@ import (
 	"os"
 
 	. "gopkg.in/check.v1"
-	"islandzero.net/x/encoding/yaml"
+	"landzero.net/x/encoding/yaml"
 )
 
 var marshalIntTest = 123

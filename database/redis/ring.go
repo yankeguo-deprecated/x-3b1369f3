@@ -10,10 +10,10 @@ import (
 	"sync/atomic"
 	"time"
 
-	"islandzero.net/x/database/redis/internal"
-	"islandzero.net/x/database/redis/internal/consistenthash"
-	"islandzero.net/x/database/redis/internal/hashtag"
-	"islandzero.net/x/database/redis/internal/pool"
+	"landzero.net/x/database/redis/internal"
+	"landzero.net/x/database/redis/internal/consistenthash"
+	"landzero.net/x/database/redis/internal/hashtag"
+	"landzero.net/x/database/redis/internal/pool"
 )
 
 const nreplicas = 100

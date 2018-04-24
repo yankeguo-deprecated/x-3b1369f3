@@ -26,8 +26,8 @@ import (
 	"sync"
 	"time"
 
-	"islandzero.net/x/com"
-	"islandzero.net/x/net/web"
+	"landzero.net/x/com"
+	"landzero.net/x/net/web"
 )
 
 // Item represents a cache item.

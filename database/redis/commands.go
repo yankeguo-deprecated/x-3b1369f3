@@ -5,7 +5,7 @@ import (
 	"io"
 	"time"
 
-	"islandzero.net/x/database/redis/internal"
+	"landzero.net/x/database/redis/internal"
 )
 
 func readTimeout(timeout time.Duration) time.Duration {

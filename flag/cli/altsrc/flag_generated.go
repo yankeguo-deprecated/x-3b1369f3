@@ -3,7 +3,7 @@ package altsrc
 import (
 	"flag"
 
-	"islandzero.net/x/flag/cli"
+	"landzero.net/x/flag/cli"
 )
 
 // WARNING: This file is generated!

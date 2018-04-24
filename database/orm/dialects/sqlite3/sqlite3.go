@@ -1,3 +1,3 @@
 package sqlite
 
-import _ "islandzero.net/x/database/sqlite3"
+import _ "landzero.net/x/database/sqlite3"

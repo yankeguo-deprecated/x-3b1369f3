@@ -23,7 +23,7 @@ import (
 	"net/http"
 	"runtime"
 
-	"islandzero.net/x/net/web/inject"
+	"landzero.net/x/net/web/inject"
 )
 
 const (

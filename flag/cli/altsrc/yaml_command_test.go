@@ -11,7 +11,7 @@ import (
 	"os"
 	"testing"
 
-	"islandzero.net/x/flag/cli"
+	"landzero.net/x/flag/cli"
 )
 
 func TestCommandYamlFileTest(t *testing.T) {

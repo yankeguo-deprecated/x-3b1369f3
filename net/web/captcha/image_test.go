@@ -17,7 +17,7 @@ package captcha
 import (
 	"testing"
 
-	"islandzero.net/x/com"
+	"landzero.net/x/com"
 )
 
 type byteCounter struct {

@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"islandzero.net/x/text/inflection"
+	"landzero.net/x/text/inflection"
 )
 
 // DefaultTableNameHandler default table name handler

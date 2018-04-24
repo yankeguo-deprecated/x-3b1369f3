@@ -3,7 +3,7 @@ package orm_test
 import (
 	"errors"
 
-	"islandzero.net/x/database/orm"
+	"landzero.net/x/database/orm"
 
 	"reflect"
 	"testing"

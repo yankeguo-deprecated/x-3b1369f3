@@ -10,8 +10,8 @@ import (
 	"testing"
 	"time"
 
-	"islandzero.net/x/database/redis"
-	"islandzero.net/x/database/redis/internal/hashtag"
+	"landzero.net/x/database/redis"
+	"landzero.net/x/database/redis/internal/hashtag"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"

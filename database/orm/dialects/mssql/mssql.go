@@ -8,7 +8,7 @@ import (
 	"time"
 
 	_ "github.com/denisenkom/go-mssqldb"
-	"islandzero.net/x/database/orm"
+	"landzero.net/x/database/orm"
 )
 
 func setIdentityInsert(scope *orm.Scope) {

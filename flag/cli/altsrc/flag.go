@@ -6,7 +6,7 @@ import (
 	"strings"
 	"syscall"
 
-	"islandzero.net/x/flag/cli"
+	"landzero.net/x/flag/cli"
 )
 
 // FlagInputSourceExtension is an extension interface of cli.Flag that

@@ -20,8 +20,8 @@ import (
 	"sync"
 	"time"
 
-	"islandzero.net/x/database/redis"
-	"islandzero.net/x/net/web/session"
+	"landzero.net/x/database/redis"
+	"landzero.net/x/net/web/session"
 )
 
 // RedisStore represents a redis session store implementation.

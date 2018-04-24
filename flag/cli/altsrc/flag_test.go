@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	"islandzero.net/x/flag/cli"
+	"landzero.net/x/flag/cli"
 )
 
 type testApplyInputSource struct {

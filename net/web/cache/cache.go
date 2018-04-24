@@ -19,7 +19,7 @@ package cache
 import (
 	"fmt"
 
-	"islandzero.net/x/net/web"
+	"landzero.net/x/net/web"
 )
 
 const _VERSION = "0.3.0"

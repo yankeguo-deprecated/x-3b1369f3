@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"islandzero.net/x/database/orm"
+	"landzero.net/x/database/orm"
 )
 
 type Person struct {

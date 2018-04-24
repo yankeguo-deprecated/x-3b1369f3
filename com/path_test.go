@@ -56,7 +56,7 @@ func BenchmarkGetGOPATHs(b *testing.B) {
 
 func BenchmarkGetSrcPath(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		GetSrcPath("islandzero.net/x/com")
+		GetSrcPath("landzero.net/x/com")
 	}
 }
 

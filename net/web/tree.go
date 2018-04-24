@@ -20,7 +20,7 @@ import (
 
 	neturl "net/url"
 
-	"islandzero.net/x/com"
+	"landzero.net/x/com"
 )
 
 type patternType int8

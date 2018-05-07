@@ -1,11 +1,7 @@
 package main
 
 import (
-	"encoding/binary"
-	"encoding/gob"
 	"flag"
-	"io"
-	"net"
 	"os"
 	"os/signal"
 	"strings"
@@ -13,7 +9,6 @@ import (
 
 	"golang.org/x/crypto/ssh/terminal"
 	"landzero.net/x/io/pty"
-	"landzero.net/x/io/stdcopy"
 	"landzero.net/x/os/minit"
 )
 
@@ -36,49 +31,32 @@ func buildEnv() []string {
 }
 
 func main() {
-	flag.StringVar(&sock, "H", "/var/run/minit.sock", "socket file to connect")
+	flag.StringVar(&sock, "H", "unix:///var/run/minit.sock", "socket file to connect")
 	flag.Parse()
 	if len(sock) == 0 {
 		printHelp()
 		os.Exit(1)
 	}
-	var err error
-	var addr *net.UnixAddr
-	if addr, err = net.ResolveUnixAddr("unix", sock); err != nil {
-		panic(err)
-	}
-	var c *net.UnixConn
-	if c, err = net.DialUnix("unix", nil, addr); err != nil {
-		panic(err)
-	}
+
 	// write command
 	cmd := minit.Command{
 		Cmd: []string{"bash", "-il"},
 		Pty: true,
 		Env: buildEnv(),
 	}
-	gob.NewEncoder(c).Encode(cmd)
-	// stream stdin
-	go func() {
-		io.Copy(stdcopy.NewStdWriter(c, stdcopy.Stdout), os.Stdin)
-		c.CloseWrite()
-	}()
+	var c minit.Conn
+	var err error
+	if c, err = minit.DialURL(sock, cmd); err != nil {
+		panic(err)
+	}
 	// stream winsize
 	ch := make(chan os.Signal, 1)
-	sw := stdcopy.NewStdWriter(c, stdcopy.Stderr)
 	signal.Notify(ch, syscall.SIGWINCH)
 	go func() {
 		for range ch {
-			var wi int
-			var hi int
-			var err error
-			if hi, wi, err = pty.Getsize(os.Stdin); err != nil {
-				continue
+			if hi, wi, err := pty.Getsize(os.Stdin); err == nil {
+				c.SetWinsize(uint16(wi), uint16(hi))
 			}
-			bs := make([]byte, 4, 4)
-			binary.BigEndian.PutUint16(bs, uint16(wi))
-			binary.BigEndian.PutUint16(bs[2:4], uint16(hi))
-			sw.Write(bs)
 		}
 	}()
 	ch <- syscall.SIGWINCH // Initial resize.
@@ -88,7 +66,9 @@ func main() {
 	}
 	defer func() { _ = terminal.Restore(int(os.Stdin.Fd()), oldState) }() // Best effort.
 	// stream stdout
-	io.Copy(os.Stdout, c)
+	// stream stdin
+	go c.ReadFrom(os.Stdin)
+	c.DemuxTo(os.Stdout, os.Stderr)
 	c.Close()
 }
 

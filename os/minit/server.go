@@ -107,7 +107,9 @@ func (sc *serverConn) Handle() (err error) {
 		defer p.Close()
 		go func() {
 			stdcopy.StdCopy(ioext.NewSilentWriter(p), newWinsizeWriter(p), sc.nc) // ignore write error
-			ecmd.Process.Kill()                                                   // kill after disconnect
+			if proc := ecmd.Process; proc != nil {
+				proc.Kill() // kill after disconnect
+			}
 		}()
 		go io.Copy(stdcopy.NewStdWriter(sc.nc, stdcopy.Stdout), p)
 	} else {
@@ -115,9 +117,15 @@ func (sc *serverConn) Handle() (err error) {
 		ecmd.Stdin = stdir
 		ecmd.Stdout = stdcopy.NewStdWriter(sc.nc, stdcopy.Stdout)
 		ecmd.Stderr = stdcopy.NewStdWriter(sc.nc, stdcopy.Stderr)
+		if err = ecmd.Start(); err != nil {
+			log.Println(name, "failed to start", err)
+			return
+		}
 		go func() {
 			stdcopy.StdCopy(ioext.NewSilentWriter(stdiw), ioutil.Discard, sc.nc) // ignore write error
-			ecmd.Process.Kill()                                                  // kill after disconnect
+			if proc := ecmd.Process; proc != nil {
+				proc.Kill() // kill after disconnect
+			}
 		}()
 	}
 	if err = ecmd.Wait(); err != nil {

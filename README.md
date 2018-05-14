@@ -1,2 +1,5 @@
 # x
-all in one golang extended libraries
+
+`landzero.net/x`
+
+all-in-one golang libraries
